@@ -4,18 +4,13 @@ A **Vole machine simulator** written in C++ with a **Qt graphical interface**.
 Write or load a machine-language program, store it in memory, then run it at once or
 one instruction at a time while you watch the registers, the memory and the screen change.
 
-> CS213 Object-Oriented Programming - Assignment 2 (Part 2)
-> Faculty of Computers and Artificial Intelligence, Cairo University
-
-![NOVA Virtual Machine](docs/screenshot.png)
-
 ## Want to use the project?
 
-- **Installation and running:** read the file
-  [How to install & run the program.txt](How%20to%20install%20%26%20run%20the%20program.txt)
+- **Installation and running:** read the file: How to install & run the program.txt
   for the step-by-step instructions.
+  
 - **Try it with ready-made programs:** the file
-  [Two programs.txt](Two%20programs.txt) contains **2 test programs**. Copy the content of a program
+  The two programs Division,txt and Sum of squares.txt contains **2 test programs**. Copy the content of a program
   and paste it into the **Machine code** box of the running application, then press **Store in memory**
   and **Run program** (or **Step**).
 
@@ -47,41 +42,6 @@ one instruction at a time while you watch the registers, the memory and the scre
 | C++ compiler | C++17 (MinGW or MSVC on Windows, g++ on Linux) |
 | Qt Creator | recommended |
 
-### Clone
-
-```bash
-git clone https://github.com/USERNAME/vole-simulator.git
-cd vole-simulator
-```
-
-### Build and run with Qt Creator (recommended)
-
-1. **File -> Open File or Project...** and choose `CMakeLists.txt`.
-2. Select a Desktop kit and press **Configure Project**.
-3. Build with **Ctrl+B**, run with **Ctrl+R**.
-
-### Build from the command line
-
-```bash
-mkdir build && cd build
-cmake ..
-cmake --build .
-./NovaVM          # NovaVM.exe on Windows
-```
-
-On Windows, if the program is started outside Qt Creator and a Qt DLL is missing, run
-`windeployqt NovaVM.exe` once next to the executable.
-
-## How to use it
-
-1. Write the program in the **Machine code** box (one instruction per line) or press **Load file...**.
-2. Choose the format of your code: **Binary**, **Decimal** or **Hex**.
-3. Choose the **Start address** (hex, even, from `00` to `FE`).
-4. Press **Store in memory**.
-5. Press **Run program** (`F5`) or **Step** (`F10`).
-
-The program stops at the halt instruction `C000`, at an invalid instruction, or after 100000
-instructions (possible endless loop). Press **Store in memory** again to run it from the start.
 
 ### Program format
 
@@ -154,10 +114,10 @@ C000 ; halt
 
 | Member | Area |
 |--------|------|
-| Ahmed Esmail | Memory, registers, screen headers, GUI |
-| Abdulrahman Shawky | Program loader, user interface, GUI |
-| Mahmoud Waleed | CPU, instruction decoding, execution cycle, repository |
-| Ahmed Magdy | ALU, screen, machine, integration, testing (team leader) |
+| Ahmed Ismail | Memory, registers, screen headers, GUI implementation |
+| Abdulrahman Shawky | Program loader, user interface|
+| Mahmoud Waleed | CPU, instruction decoding, execution cycle, repository, GUI prototype |
+| Ahmed Magdy | ALU, screen, machine, integration, testing  |
 
 ### Git workflow
 
