@@ -1,13 +1,17 @@
+#include <QApplication>
+#include "MainWindow.h"
 
-#include <iostream>
-#include "UI.h"
-
-using namespace std;
-
-int main()
+/*
+ Entry point of the NOVA VM GUI.
+ (The old console main file is NOT part of this project anymore.)
+ */
+int main(int argc, char *argv[])
 {
-    UI ui;
-    ui.run();
+    QApplication app(argc, argv);
+    QApplication::setApplicationName("NOVA VM");
 
-    return 0;
+    MainWindow window;
+    window.show();
+
+    return app.exec();
 }
