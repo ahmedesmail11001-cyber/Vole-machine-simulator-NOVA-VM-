@@ -1,7 +1,7 @@
 #include "CPU.h"
 #include "Alu.h"
 
-    CPU::CPU(Memory& machineMemory, Screen& machineScreen)
+CPU::CPU(Memory& machineMemory, Screen& machineScreen)
     : pc(0), halted(false), memory(machineMemory), screen(machineScreen) {}
 
 bool CPU::fetch() {
@@ -43,60 +43,60 @@ void CPU::execute() {
     const uint8_t valueT = registers.read(t);
 
     switch (opcode) {
-        case 0x1:
-            registers.write(r, memory.read(xy));
-            break;
+    case 0x1:
+        registers.write(r, memory.read(xy));
+        break;
 
-        case 0x2:
-            registers.write(r, xy);
-            break;
+    case 0x2:
+        registers.write(r, xy);
+        break;
 
-        case 0x3:
-            if (xy == SCREEN_ADDRESS) {
-                screen.write(valueR);
-            } else {
-                memory.write(xy, valueR);
-            }
-            break;
+    case 0x3:
+        if (xy == SCREEN_ADDRESS) {
+            screen.write(valueR);
+        } else {
+            memory.write(xy, valueR);
+        }
+        break;
 
-        case 0x4:
-            registers.write(t, valueS);
-            break;
+    case 0x4:
+        registers.write(t, valueS);
+        break;
 
-        case 0x5:
-            registers.write(r, alu.addInt(valueS, valueT));
-            break;
+    case 0x5:
+        registers.write(r, alu.addInt(valueS, valueT));
+        break;
 
-        case 0x6:
-            registers.write(r, alu.addFloat(valueS, valueT));
-            break;
+    case 0x6:
+        registers.write(r, alu.addFloat(valueS, valueT));
+        break;
 
-        case 0x7:
-            registers.write(r, alu.bitOr(valueS, valueT));
-            break;
+    case 0x7:
+        registers.write(r, alu.bitOr(valueS, valueT));
+        break;
 
-        case 0x8:
-            registers.write(r, alu.bitAnd(valueS, valueT));
-            break;
+    case 0x8:
+        registers.write(r, alu.bitAnd(valueS, valueT));
+        break;
 
-        case 0x9:
-            registers.write(r, alu.bitXor(valueS, valueT));
-            break;
+    case 0x9:
+        registers.write(r, alu.bitXor(valueS, valueT));
+        break;
 
-        case 0xA:
-            registers.write(r, alu.rotateRight(valueR, t % 8));
-            break;
+    case 0xA:
+        registers.write(r, alu.rotateRight(valueR, t % 8));
+        break;
 
-        case 0xB:
-            if (valueR == registers.read(0)) {
-                pc = xy;
-            }
-            break;
+    case 0xB:
+        if (valueR == registers.read(0)) {
+            pc = xy;
+        }
+        break;
 
-        case 0xC:
-        default:
-            halted = true;
-            break;
+    case 0xC:
+    default:
+        halted = true;
+        break;
     }
 }
 

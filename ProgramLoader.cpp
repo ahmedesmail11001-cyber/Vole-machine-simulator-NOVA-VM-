@@ -15,18 +15,23 @@ bool ProgramLoader::isValidHexLine(const string& line) {
 
 bool ProgramLoader::loadFromFile(const string& file, Memory& memory, int start_address, string& error) {
     error.clear();
+    ifstream in(file);
+    if (!in) {
+        error = "Could not open file: " + file;
+        return false;
+    }
+    return loadFromStream(in, memory, start_address, error);
+}
+
+// NEW: the old body of loadFromFile, now working on a stream
+bool ProgramLoader::loadFromStream(istream& in, Memory& memory, int start_address, string& error) {
+    error.clear();
     if (start_address < 0 || start_address >= 0xFF) {
         error = "Start address must be between 00 and FE.";
         return false;
     }
     if (start_address % 2 != 0) {
         error="Start address must be an even number.";
-        return false;
-    }
-
-    ifstream in(file);
-    if (!in) {
-        error = "Could not open file: " + file;
         return false;
     }
 
@@ -59,4 +64,4 @@ bool ProgramLoader::loadFromFile(const string& file, Memory& memory, int start_a
         memory.write(address++, inst & 0xFF);
     }
     return true;
-}
+}

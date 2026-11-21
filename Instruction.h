@@ -11,9 +11,9 @@ private:
     std::uint8_t lowByte;          // operand
 public:
     Instruction();
-    Instruction(std::uint8_t highByte, std::uint8_t lowByte); 
+    Instruction(std::uint8_t highByte, std::uint8_t lowByte);
 
-    const int getOpcode() const; //higherbyte = A1 = 
+    const int getOpcode() const; //higherbyte = A1 =
     const int getR() const;
     const int getS() const;
     const int getT() const;

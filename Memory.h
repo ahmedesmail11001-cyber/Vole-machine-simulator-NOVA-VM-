@@ -4,7 +4,7 @@
 
 class Memory {
 private:
-    uint8_t cells[256];  
+    uint8_t cells[256];
 
 public:
     Memory();

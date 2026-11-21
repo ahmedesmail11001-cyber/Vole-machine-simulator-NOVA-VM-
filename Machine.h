@@ -19,6 +19,7 @@ public:
     Machine();
     Machine(Memory& m, Screen& s);
     bool loadFromFile(const string& file,int start_address, string& error); 
+    bool loadFromText(const string& text, int start_address, string& error);   // NEW: load a program typed in the GUI
     bool run();     // 
     bool step();     // 
     bool isHalted() const;   // return true if the program is halted
@@ -35,4 +36,4 @@ public:
 
 
 // bool loadProgram(string &file, int &startAddress, string &errorMessage); // file name , start address to load in it , error message
-// #include "CPU.h"
+// #include "CPU.h"

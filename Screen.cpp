@@ -22,3 +22,9 @@ void Screen::display() const
         cout << x << " " ;
     }
 }
+
+// NEW: lets the GUI read what was written to the screen
+const vector<uint8_t>& Screen::getBuffer() const
+{
+    return buffer;
+}

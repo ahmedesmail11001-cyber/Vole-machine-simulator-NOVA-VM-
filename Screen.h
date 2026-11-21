@@ -13,6 +13,7 @@ public:
     void write(uint8_t value);
     void clear();
     void display() const;
+    const vector<uint8_t>& getBuffer() const;   // NEW: lets the GUI read what was written to the screen
 
 };
 #endif

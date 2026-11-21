@@ -9,7 +9,7 @@ Instruction::Instruction(uint8_t high,uint8_t low) {
 }
 
 const int Instruction::getOpcode() const {
-    return highByte / 16;   
+    return highByte / 16;
 }
 
 const int Instruction::getR() const {
@@ -29,13 +29,13 @@ const int Instruction::getXY() const {
 }
 
 bool Instruction::isValid() const {
-    if (getOpcode() >= 1 && getOpcode() <= 12) { 
+    if (getOpcode() >= 1 && getOpcode() <= 12) {
         return true;
     }
     return false;
 }
 
-    const std::string Instruction::toString() const {
+const std::string Instruction::toString() const {
     return std::to_string(highByte) + " " + std::to_string(lowByte);
 }
 
