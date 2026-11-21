@@ -1,0 +1,22 @@
+; ------------------------------------------------------------
+; Vole Machine Program
+; Purpose: Calculate the sum of squares of 4 and 3 and display the result (25) on the screen.
+; Each square is done by adding the number to itself "number" times.
+; ------------------------------------------------------------
+
+2004 ; Load immediate value 04 into register 0 (number = 4)
+2101 ; Load immediate value 01 into register 1 (constant = 1)
+2200 ; Load immediate value 00 into register 2 (total = 0)
+2300 ; Load immediate value 00 into register 3 (counter = 0)
+B310 ; If register 3 (counter) equals register 0 (number), jump to address 10
+5220 ; Add registers 2 and 0, put result in register 2 (total = total + number)
+5331 ; Add registers 3 and 1, put result in register 3 (counter = counter + 1)
+B008 ; Jump to address 08 (register 0 always equals itself, so always jumps)
+2003 ; Load immediate value 03 into register 0 (number = 3)
+2300 ; Load immediate value 00 into register 3 (counter = 0)
+B31C ; If register 3 (counter) equals register 0 (number), jump to address 1C
+5220 ; Add registers 2 and 0, put result in register 2 (total = total + number)
+5331 ; Add registers 3 and 1, put result in register 3 (counter = counter + 1)
+B014 ; Jump to address 14 (register 0 always equals itself, so always jumps)
+32FF ; Store register 2 into memory[FF] (screen output)
+C000 ; Halt

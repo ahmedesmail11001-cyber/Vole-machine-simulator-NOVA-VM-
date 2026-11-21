@@ -1,0 +1,17 @@
+; ------------------------------------------------------------
+; Vole Machine Program
+; Purpose: Divide 9 by 3 and display the result (3) on the screen.
+; The result is the number of times the divisor is added until the sum reaches the dividend.
+; ------------------------------------------------------------
+
+2009 ; Load immediate value 09 into register 0 (dividend = 9)
+2103 ; Load immediate value 03 into register 1 (divisor = 3)
+2201 ; Load immediate value 01 into register 2 (constant = 1)
+2300 ; Load immediate value 00 into register 3 (sum = 0)
+2400 ; Load immediate value 00 into register 4 (quotient = 0)
+5331 ; Add registers 3 and 1, put result in register 3 (sum = sum + divisor)
+5442 ; Add registers 4 and 2, put result in register 4 (quotient = quotient + 1)
+B312 ; If register 3 (sum) equals register 0 (dividend), jump to address 12
+B00A ; Jump to address 0A (register 0 always equals itself, so always jumps)
+34FF ; Store register 4 into memory[FF] (screen output)
+C000 ; Halt
